@@ -11,6 +11,20 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'IoT Dashboard',
     icon: 'nb-home',
     link: '/pages/iot-dashboard',
+    children: [
+      {
+        title: 'Riscaldamento',
+        link: '/pages/dashboard/heater',
+      },
+      {
+        title: 'Form Layouts',
+        link: '/pages/forms/layouts',
+      },
+      {
+        title: 'Form prova',
+        link: '/pages/forms/prova',
+      },
+    ],
   },
   {
     title: 'FEATURES',
