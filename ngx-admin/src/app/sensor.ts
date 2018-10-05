@@ -1,4 +1,5 @@
 export class Sensor {
+  //xxx
     id: number;
     shieldid: number;
     parentid: number;
