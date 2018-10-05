@@ -10,7 +10,6 @@ const routes: Routes = [{
   children: [/*{
     path: 'xxdashboard',
     component: ECommerceComponent,
-<<<<<<< HEAD
   }, */
   {
     path: 'webduinodashboard',
@@ -24,34 +23,6 @@ const routes: Routes = [{
     path: 'ui-features',
     loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
   }*/, {
-=======
-  }, {
-    path: 'iot-dashboard',
-    component: DashboardComponent,
-    loadChildren: './dashboard/dashboard.module#DashboardModule',
-  }, {
-    path: 'ui-features',
-    loadChildren: './ui-features/ui-features.module#UiFeaturesModule',
-  }, {
-    path: 'settings',
-    loadChildren: './settings/settings.module#SettingsModule',
-  }, {
-    path: 'components',
-    loadChildren: './components/components.module#ComponentsModule',
-  }, {
-    path: 'maps',
-    loadChildren: './maps/maps.module#MapsModule',
-  }, {
-    path: 'charts',
-    loadChildren: './charts/charts.module#ChartsModule',
-  }, {
-    path: 'editors',
-    loadChildren: './editors/editors.module#EditorsModule',
-  }, {
-    path: 'forms',
-    loadChildren: './forms/forms.module#FormsModule',
-  }, {
->>>>>>> origin/master
     path: 'settings',
     loadChildren: './settings/settings.module#SettingsModule',
   }, 

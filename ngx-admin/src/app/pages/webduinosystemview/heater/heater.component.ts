@@ -1,31 +1,54 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { WebduinosystemService } from '../../../webduinosystem.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { NbThemeService } from '@nebular/theme';
+import { Webduinosystem } from '../../../webduinosystem';
+
+interface CardSettings {
+  title: string;
+  iconClass: string;
+  type: string;
+}
 
 @Component({
   selector: 'ngx-heater',
-  styleUrls: ['./heater.component.scss'],
   templateUrl: './heater.component.html',
+  styleUrls: ['./heater.component.scss']
 })
-export class HeaterComponent implements OnDestroy {
+export class HeaterComponent implements OnInit {
+  
+  id: number;
+  webduinosystem: Webduinosystem;
+  
+  constructor(private webduinosystemService: WebduinosystemService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalService: NgbModal,
+    private themeService: NbThemeService
+    ) 
+      {
+  
+    }
 
-  temperature = 24;
-  temperatureOff = false;
-  temperatureMode = 'cool';
-
-  humidity = 87;
-  humidityOff = false;
-  humidityMode = 'heat';
-
-  colors: any;
-  themeSubscription: any;
-
-  constructor(private theme: NbThemeService) {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-      this.colors = config.variables;
+  ngOnInit() {
+    this.route
+    .queryParams
+    .subscribe(params => {
+    // Defaults to 0 if no query param provided.
+    this.id = +params['id'] || 0;
     });
+
+    this.getWebduinosystem(/*this.id*/2);
   }
 
-  ngOnDestroy() {
-    this.themeSubscription.unsubscribe();
+  getWebduinosystem(id: number): void {
+    this.webduinosystemService.getWebduinosystem(id)
+    .subscribe(webduinosystem => 
+      {
+        this.webduinosystem = webduinosystem
+      });
   }
+
 }
