@@ -2,11 +2,11 @@ import { Component, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 @Component({
-  selector: 'ngx-heater',
-  styleUrls: ['./heater.component.scss'],
-  templateUrl: './heater.component.html',
+  selector: 'ngx-temperature',
+  styleUrls: ['./temperature.component.scss'],
+  templateUrl: './temperature.component.html',
 })
-export class HeaterComponent implements OnDestroy {
+export class TemperatureComponent implements OnDestroy {
 
   temperature = 24;
   temperatureOff = false;

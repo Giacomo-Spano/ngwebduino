@@ -10,6 +10,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Main Dashboard',
     icon: 'nb-home',
+<<<<<<< HEAD
     link: '/pages/webduinodashboard',
     home: true,
   },
@@ -25,6 +26,21 @@ export const MENU_ITEMS: NbMenuItem[] = [
       {
         title: 'prova',
         link: '/pages/webduinosystemview/dashboard',
+=======
+    link: '/pages/iot-dashboard',
+    children: [
+      {
+        title: 'Riscaldamento',
+        link: '/pages/dashboard/heater',
+      },
+      {
+        title: 'Form Layouts',
+        link: '/pages/forms/layouts',
+      },
+      {
+        title: 'Form prova',
+        link: '/pages/forms/prova',
+>>>>>>> origin/master
       },
     ],
   },
