@@ -1,16 +1,32 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  {
+  /*{
     title: 'E-commerce',
     icon: 'nb-e-commerce',
     link: '/pages/dashboard',
     home: true,
+  },*/
+  {
+    title: 'Main Dashboard',
+    icon: 'nb-home',
+    link: '/pages/webduinodashboard',
+    home: true,
   },
   {
-    title: 'IoT Dashboard',
-    icon: 'nb-home',
-    link: '/pages/iot-dashboard',
+    title: 'Webduinosystemview',
+    icon: 'nb-e-commerce',
+    //link: '/pages/webduinosystemview',
+    children: [
+      {
+        title: 'Riscaldamento',
+        link: '/pages/webduinosystemview/heater',
+      },
+      {
+        title: 'prova',
+        link: '/pages/webduinosystemview/dashboard',
+      },
+    ],
   },
   {
     title: 'FEATURES',

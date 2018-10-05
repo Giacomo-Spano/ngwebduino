@@ -1,0 +1,21 @@
+
+<div *ngIf="zoneid">
+    <div>
+        <div>
+        zone name:{{zone.name}}
+        </div>
+        
+        +++++
+        <div>
+          <nb-list>
+              <nb-list-item *ngFor="let zonesensor of zone.zonesensors">
+                <div>
+                  <ngx-sensor [sensorid]=zonesensor.sensorid></ngx-sensor>                  
+                </div>
+              </nb-list-item>
+          </nb-list>
+        </div>
+        -----
+
+      </div>
+  </div>

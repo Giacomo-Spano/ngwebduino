@@ -56,11 +56,6 @@
         <nb-tabset>
           <nb-tab tabTitle="Attuatori">
               <ngx-webduinosystemactuators [actuators]="webduinosystem.actuators"></ngx-webduinosystemactuators>
-
-              <ngx-sensors></ngx-sensors>
-
-              <ng2-smart-table [settings]="actuatorsettings" [source]="actuatorsource" (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="onUserRowSelect($event)">
-                </ng2-smart-table>
           </nb-tab>
           <nb-tab tabTitle="Zone">
             <ng2-smart-table [settings]="zonesettings" [source]="zonesource" (deleteConfirm)="onDeleteConfirm($event)" (userRowSelect)="onUserRowSelect($event)">

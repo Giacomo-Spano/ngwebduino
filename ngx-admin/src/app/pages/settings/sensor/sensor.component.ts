@@ -41,4 +41,5 @@ export class SensorComponent implements OnInit {
         this.sensor = sensor
       });
   }
+
 }

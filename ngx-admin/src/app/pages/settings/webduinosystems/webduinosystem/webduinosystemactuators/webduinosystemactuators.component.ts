@@ -131,14 +131,44 @@ export class WebduinosystemactuatorsComponent implements OnInit {
     var actuatorid = this.getVal(event.newData.sensor);
     for (var actuator of this.actuators) {
       if (actuator.id == event.newData.id) {
-        actuator.actuatorid = actuatorid;
+        actuator.sensorid = actuatorid;
+        actuator.name = event.newData.name;
         this.webduinosystemService.updateWebduinosystemActuator(actuator)
           .subscribe(actuator => {
+            if (actuator != undefined) {
+              event.confirm.resolve(event.newData);
+              this.ngOnInit();
+            } else {
+              event.confirm.reject();  
+            }
             event.confirm.resolve(event.newData);
           });
         break;
       }
     }  
+  }
+
+  onCreateConfirm(event): void {
+    var actuatorid = this.getVal(event.newData.sensor);
+    var webduinosystemactuator: WebduinosystemActuator = {
+      id: 0,
+      webduinosystemid: this.webduinosystemid,
+      sensorid: actuatorid,
+      name: event.newData.name,
+    }
+    this.webduinosystemService.updateWebduinosystemActuator(webduinosystemactuator)
+      .subscribe(webduinosystemactuator => {
+        if (webduinosystemactuator != undefined) {
+          event.confirm.resolve(event.newData);
+          this.ngOnInit();
+        } else {
+          event.confirm.reject();  
+        }
+      },      
+        err => {console.log(err);
+          event.confirm.reject();  
+      }
+      ); 
   }
 
   getVal(str: string): number {
@@ -149,23 +179,17 @@ export class WebduinosystemactuatorsComponent implements OnInit {
     return val;
   }
 
-  onCreateConfirm(event): void {
-
-    //event.newData.id = 0;
-    var actuatorid = this.getVal(event.newData.sensor);
-    var webduinosystemactuator: WebduinosystemActuator = {
-      id: 0,
-      webduinosystemid: this.webduinosystemid,
-      actuatorid: actuatorid,
-      name: event.newData.name,
+  onDeleteConfirm(event): void {
+    if (window.confirm('Are you sure you want to delete?')) {
+      this.webduinosystemService.deleteWebduinosystemActuator(event.data)
+        .subscribe(
+          webduinosystem => {
+          event.confirm.resolve();
+          this.ngOnInit();
+        });      
+    } else {
+      event.confirm.reject();
     }
-
-    //console.log(event);
-    this.webduinosystemService.updateWebduinosystemActuator(webduinosystemactuator)
-      .subscribe(webduinosystemactuator => {
-        this.actuators.push(webduinosystemactuator);
-      });   
-    event.confirm.resolve(event.newData);
   }
 
   onUserRowSelect(event): void {
@@ -175,29 +199,24 @@ export class WebduinosystemactuatorsComponent implements OnInit {
 
   }
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
-
+  
   getWebduinosystemActuators(id: number): void {
     this.webduinosystemService.getWebduinosystem(id)
     .subscribe(webduinosystem => 
       {
+        this.source = [];
         this.actuators = webduinosystem.actuators;
         for (var actuator of webduinosystem.actuators) {
           var item : Actuator;
           item = {
                   id: actuator.id,
                   name: actuator.name,
-                  //sensorid: actuator.actuatorid,
-                  sensor: this.getSensorItem(actuator.actuatorid)/*'<div val="' + actuator.actuatorid + '" style="display: none;"></div><div>' 
+                  webduinosystemid: actuator.webduinosystemid,
+                  sensor: this.getSensorItem(actuator.sensorid)/*'<div val="' + actuator.actuatorid + '" style="display: none;"></div><div>' 
                           + '[' + actuator.actuatorid + ']' 
                           + this.getSensorFromId(actuator.actuatorid).name
                           + '</div>'*/
+
           }
           this.source.push(item);  
         }  
@@ -207,18 +226,14 @@ export class WebduinosystemactuatorsComponent implements OnInit {
 
   getSensorItem(sensorid: number): string {
     var str: string;
-    /*str = '<div val="' + sensorid + '" style="display: none;"></div><div>' 
-          + '[' + sensorid + '] ' 
-          + this.getSensorFromId(sensorid).name
-          + '</div>';*/
-
+    var sensor: Sensor;
+    sensor = this.getSensorFromId(sensorid);
     str = '<div val="' + sensorid + '" style="display: none;"></div><a href="' 
           + './#/pages/settings/sensor?id=' + sensorid + '">' 
           + '[' + sensorid + '] ' 
           + this.getSensorFromId(sensorid).name
+          + ' :' + sensor.type
           + '</a>';
-
-
     return str;
   }
 

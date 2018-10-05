@@ -10,6 +10,7 @@ import { MessageService } from './message.service';
 import { SensorType } from './sensortype';
 import { Sensor } from './sensor';
 import { WebduinosystemActuator } from './webduinosystemactuator';
+import { Zone } from './zone';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -56,6 +57,15 @@ export class WebduinosystemService {
     return this.http.get<Sensor>(url).pipe(
       tap(_ => this.log(`fetched sensor id=${id}`)),
       catchError(this.handleError<Sensor>(`getSensor id=${id}`))
+    );
+  }
+
+  /** GET webduinosystem by id. Will 404 if id not found */
+  getZone(id: number): Observable<Zone> {
+    const url = `${this.webduinosystemUrl}` + '?requestcommand=zone&id=' + `${id}`;
+    return this.http.get<Zone>(url).pipe(
+      tap(_ => this.log(`fetched zone id=${id}`)),
+      catchError(this.handleError<Zone>(`getZone id=${id}`))
     );
   }
 
@@ -158,20 +168,19 @@ export class WebduinosystemService {
 
    /** POST: add a new sensor to the server */
   addWebduinosystemActuator (actuator: WebduinosystemActuator): Observable<Sensor> {
-    return this.http.post<Sensor>(this.webduinosystemUrl, actuator, httpOptions).pipe(
+    return this.http.post<Sensor>(this.webduinosystemUrl + '?data=webduinosystemactuator', actuator, httpOptions).pipe(
       tap((sensor: Sensor) => this.log(`added sensor w/ id=${sensor.id}`)),
-      catchError(this.handleError<Sensor>('addSensor'))
+      catchError(this.handleError<Sensor>('addSensor',))
     );
   }
 
   /** DELETE: delete the sensor from the server */
-  deleteWebduinosystemActuator (actuator: WebduinosystemActuator | number): Observable<WebduinosystemActuator> {
-    const id = typeof actuator === 'number' ? actuator : actuator.id;
-    const url = `${this.webduinosystemUrl}/${id}`;
-
-    return this.http.delete<WebduinosystemActuator>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted actuator id=${id}`)),
-      catchError(this.handleError<WebduinosystemActuator>('deleteWebduinosystemActuator'))
+  deleteWebduinosystemActuator (actuator: WebduinosystemActuator): Observable<Webduinosystem> {
+    const url = this.webduinosystemUrl + '?data=webduinosystemactuator&param=delete';
+    return this.http.post<Webduinosystem>(url, actuator, httpOptions).pipe(
+      tap(_ => this.log(`deleted actuator id=${actuator.id}`)),
+      //catchError(this.handleError<Webduinosystem>('deleteWebduinosystemActuator'))
+      catchError(this.handleError('getHeroes', ))
     );
   }
 
@@ -186,6 +195,8 @@ export class WebduinosystemService {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
+
+      window.alert('error: ' + error);
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);

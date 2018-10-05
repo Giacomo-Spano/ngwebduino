@@ -49,5 +49,6 @@ const components = [
     NgxPopoverFormComponent,
     NgxPopoverTabsComponent,
   ],
+  
 })
 export class UiFeaturesModule { }

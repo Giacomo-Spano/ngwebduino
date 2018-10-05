@@ -8,4 +8,6 @@ export class Sensor {
     type: string;
     enabled: boolean;
     pin: string; 
+    status: string;
+    statustext: string;
   }

@@ -5,9 +5,9 @@ import { ThemeModule } from '../../@theme/theme.module';
 import { SettingsRoutingModule, routedComponents } from './settings-routing.module';
 import { AlertmessageComponent } from './alertmessage/alertmessage.component';
 import { SensorComponent } from './sensor/sensor.component';
-import { ZoneComponent } from './zone/zone.component';
-import { ServiceComponent } from './service/service.component';
-import { ScenarioComponent } from './scenario/scenario.component';
+//import { ZoneComponent } from './zone/zone.component';
+//import { ServiceComponent } from './service/service.component';
+//import { ScenarioComponent } from './scenario/scenario.component';
 import { SensorsComponent } from './sensors/sensors.component';
 import { ScenariosComponent } from './scenarios/scenarios.component';
 import { ZonesComponent } from './zones/zones.component';
@@ -28,9 +28,9 @@ import { CustomEditorComponent } from './webduinosystems/webduinosystem/webduino
     ...routedComponents,
     AlertmessageComponent,
     SensorComponent,
-    ZoneComponent,
-    ServiceComponent,
-    ScenarioComponent,
+    //ZoneComponent,
+    //ServiceComponent,
+    //ScenarioComponent,
     SensorsComponent,
     ScenariosComponent,
     ZonesComponent,

@@ -1,3 +1,5 @@
+import { ZoneSensor } from "./zonesensor";
+
 export class Zone {
     id: number;
     webduinosystemid: number;
@@ -5,4 +7,5 @@ export class Zone {
     description: string;
     type: string;
     enabled: boolean;
+    zonesensors: ZoneSensor[];
   }

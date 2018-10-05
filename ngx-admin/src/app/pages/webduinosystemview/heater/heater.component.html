@@ -1,0 +1,85 @@
+
+
+
+<nb-card size="medium" class=".main">
+
+  <div class="header">My Playlist3</div>
+
+
+  <div class="details">
+      <div class="title">
+        React Native UI Kitten
+      </div>
+      <div class="description">
+        React Native UI Kitten is a framework that contains a set of commonly used UI components styled in a similar way. The most awesome thing: you can change themes on the fly by just passing a different set of variables. 100% native. Give our kitten a try!
+      </div>
+    </div>
+
+    
+    <div class="container">
+        <div class="main details">
+            <div class="title">
+                Riscaldamento
+            </div>
+            <div class="description">
+              React Native UI Kitten is a framework that contains a set of commonly used UI components styled in a similar way. The most awesome thing: you can change themes on the fly by just passing a different set of variables. 100% native. Give our kitten a try!
+            </div>
+        </div>
+
+        <div class="actuators details">   
+            <div class="title">
+                Riscaldamento
+            </div>
+            
+            <div class="description">         
+                <nb-list class="actuator">
+                  <nb-list-item class="contact" *ngFor="let actuator of webduinosystem.actuators">
+                    <div>
+                      <ngx-sensor [sensorid]=actuator.sensorid></ngx-sensor>                      
+                    </div>
+                  </nb-list-item>
+                </nb-list>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="zones">
+            <nb-card-header>
+                <span>Zone</span>
+            </nb-card-header>
+            <nb-card-body>
+                <nb-list>
+                  <nb-list-item *ngFor="let zone of webduinosystem.zones">
+                    <div>
+                      <ngx-zone [zoneid]=zone.zoneid></ngx-zone>
+                      
+                    </div>
+                  </nb-list-item>
+                </nb-list>
+              </nb-card-body>
+        </div>
+        <div class="services">
+            <nb-card-header>
+                <span>Servizi</span>
+            </nb-card-header>
+            
+        </div>  
+  </div>
+  <div class="container">
+      <div class="scenarios">
+          <nb-card-header>
+              <span>Scenari</span>
+            </nb-card-header>
+      </div>
+  </div>
+
+</nb-card>
+
+<nb-card size="xsmall" class="solar-card">
+    <nb-card-header>Solar Energy Consumption</nb-card-header>
+    <nb-card-body>
+      
+    </nb-card-body>
+  </nb-card>

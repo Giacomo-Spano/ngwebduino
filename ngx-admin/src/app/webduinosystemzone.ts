@@ -1,7 +1,7 @@
 
 export class WebduinosystemZone {
     id: number;
-    sensorid: number;
+    zoneid: number;
     webduinosystemid: number;
     name: string;
   }

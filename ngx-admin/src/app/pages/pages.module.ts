@@ -1,13 +1,16 @@
 import { NgModule} from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { DashboardModule } from './dashboard/dashboard.module';
-import { ECommerceModule } from './e-commerce/e-commerce.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
-import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+import { WebduinodashboardComponent } from './webduinodashboard/webduinodashboard.component';
+import { ZoneComponent } from './settings/zone/zone.component';
+import { ServiceComponent } from './settings/service/service.component';
+import { ScenarioComponent } from './settings/scenario/scenario.component';
 
-import { MessagesComponent } from './messages/messages.component';
+//import { ZoneComponent } from './webduinosystemview/zone/zone.component';
+//import { ServiceComponent } from './service/service.component';
+//import { ScenarioComponent } from './scenario/scenario.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -17,15 +20,31 @@ const PAGES_COMPONENTS = [
   imports: [
     PagesRoutingModule,
     ThemeModule,
-    DashboardModule,
-    ECommerceModule,
-    MiscellaneousModule,
+    //WebduinoModule,
+    //SensorComponent,
+    //WebduinodashboardComponent,
+    //MiscellaneousModule,
+    //WebduinosystemComponent,
+    //HeaterwebduinosystemComponent,
+    //ZoneComponent,
+    //ServiceComponent,
+    //ScenarioComponent,
+
   ],
   declarations: [
     ...PAGES_COMPONENTS,
-    MessagesComponent,
+    WebduinodashboardComponent,
+    //WebduinoComponent,
+    //SensorComponent,
+    //MessagesComponent,
+    //HeaterwebduinosystemComponent
+    ZoneComponent,
+    ServiceComponent,
+    ScenarioComponent,
+    
   ],
-  exports: [ ],
+  exports: [ WebduinodashboardComponent/*, SensorComponent*/],
+  //schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PagesModule {
 }

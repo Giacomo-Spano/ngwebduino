@@ -4,4 +4,5 @@ export class Actuator {
     //sensorid: number;
     name: string;
     sensor: string;
+    webduinosystemid: number
   }
