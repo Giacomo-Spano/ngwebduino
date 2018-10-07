@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Zone } from '../../../zone';
-import { WebduinosystemService } from '../../../webduinosystem.service';
+import { WebduinoService } from '../../../webduino.service';
 
 @Component({
   selector: 'ngx-zone',
@@ -14,7 +14,7 @@ export class ZoneComponent implements OnInit {
 
   //id: number;
   
-  constructor(private webduinosystemService: WebduinosystemService,) 
+  constructor(private webduinosystemService: WebduinoService,) 
   {
   }
 

@@ -1,6 +1,6 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ThemeModule } from '../../@theme/theme.module';
-import { NgxPopoverCardComponent, NgxPopoverFormComponent, NgxPopoverTabsComponent } from '../ui-features/popovers/popover-examples.component';
+//import { NgxPopoverCardComponent, NgxPopoverFormComponent, NgxPopoverTabsComponent } from '../ui-features/popovers/popover-examples.component';
 import { WebduinosystemviewComponent } from './webduinosystemview.component';
 import { HeaterComponent } from './heater/heater.component';
 import { WebduinosystemviewRoutingModule } from './webduinosystemview-routing.module';
@@ -10,13 +10,15 @@ import { WebduinoModule } from '../webduino/webduino.module';
 import { SensorComponent } from './sensor/sensor.component';
 import { ZoneComponent } from './zone/zone.component';
 import { StatusCardComponent } from './status-card/status-card.component';
+import { ServiceComponent } from './service/service.component';
+import { ScenarioComponent } from './scenario/scenario.component';
 
 const components = [
   WebduinosystemviewComponent,
   HeaterComponent,
-  NgxPopoverCardComponent,
+  /*NgxPopoverCardComponent,
   NgxPopoverFormComponent,
-  NgxPopoverTabsComponent,
+  NgxPopoverTabsComponent,*/
 
 ];
 
@@ -36,11 +38,13 @@ const components = [
     ShieldComponent,
     SensorComponent,
     ZoneComponent,
+    ServiceComponent,
+    ScenarioComponent,
   ],
   entryComponents: [
-    NgxPopoverCardComponent,
+    /*NgxPopoverCardComponent,
     NgxPopoverFormComponent,
-    NgxPopoverTabsComponent,
+    NgxPopoverTabsComponent,*/
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

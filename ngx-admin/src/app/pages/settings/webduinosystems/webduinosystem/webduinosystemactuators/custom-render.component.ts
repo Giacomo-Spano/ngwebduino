@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ViewCell } from 'ng2-smart-table';
-import { WebduinosystemService } from '../../../../../webduinosystem.service';
+import { WebduinoService } from '../../../../../webduino.service';
 
 //import { ViewCell } from '../../../../ng2-smart-table';
 
@@ -16,7 +16,7 @@ export class CustomRenderComponent implements ViewCell, OnInit {
   @Input() value: /*string | */number;
   @Input() rowData: any;
 
-  constructor(private webduinosystemService: WebduinosystemService) 
+  constructor(private webduinosystemService: WebduinoService) 
     {
     }
 

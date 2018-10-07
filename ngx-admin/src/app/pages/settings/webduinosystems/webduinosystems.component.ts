@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { WebduinosystemService } from '../../../webduinosystem.service';
+import { WebduinoService } from '../../../webduino.service';
 import { Webduinosystem } from '../../../webduinosystem';
 import { WebduinosystemType } from '../../../webduinosystemtype';
 import { MessageService } from '../../../message.service';
@@ -122,7 +122,7 @@ export class WebduinosystemsComponent implements OnInit {
     }
   }
 
-  constructor(private webduinosystemService: WebduinosystemService,
+  constructor(private webduinosystemService: WebduinoService,
               private messageService: MessageService,
               private router: Router) {
 

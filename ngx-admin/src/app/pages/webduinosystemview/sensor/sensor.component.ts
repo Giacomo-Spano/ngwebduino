@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Sensor } from '../../../sensor';
-import { WebduinosystemService } from '../../../webduinosystem.service';
+import { WebduinoService } from '../../../webduino.service';
 
 @Component({
   selector: 'ngx-sensor',
@@ -9,12 +9,12 @@ import { WebduinosystemService } from '../../../webduinosystem.service';
 })
 export class SensorComponent implements OnInit {
 
-  @Input() sensor: Sensor;
+ sensor: Sensor;
   @Input() sensorid: number;
 
   //id: number;
   
-  constructor(private webduinosystemService: WebduinosystemService,) 
+  constructor(private webduinosystemService: WebduinoService,) 
   {
   }
 

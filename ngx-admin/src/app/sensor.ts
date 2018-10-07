@@ -1,5 +1,4 @@
 export class Sensor {
-  //xxx
     id: number;
     shieldid: number;
     parentid: number;
@@ -11,4 +10,5 @@ export class Sensor {
     pin: string; 
     status: string;
     statustext: string;
+    valuetext: string
   }

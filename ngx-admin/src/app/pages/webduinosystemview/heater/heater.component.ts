@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { WebduinosystemService } from '../../../webduinosystem.service';
+import { Component, OnInit , Input} from '@angular/core';
+import { WebduinoService } from '../../../webduino.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { NbThemeService } from '@nebular/theme';
 import { Webduinosystem } from '../../../webduinosystem';
+//import { Webduinosystem } from '../../../webduinosystem';
 
 interface CardSettings {
   title: string;
@@ -20,9 +21,9 @@ interface CardSettings {
 export class HeaterComponent implements OnInit {
   
   id: number;
-  webduinosystem: Webduinosystem;
+  @Input() webduinosystem: Webduinosystem;
   
-  constructor(private webduinosystemService: WebduinosystemService,
+  constructor(private webduinoservice: WebduinoService,
     private route: ActivatedRoute,
     private router: Router,
     private modalService: NgbModal,
@@ -44,7 +45,7 @@ export class HeaterComponent implements OnInit {
   }
 
   getWebduinosystem(id: number): void {
-    this.webduinosystemService.getWebduinosystem(id)
+    this.webduinoservice.getWebduinosystem(id)
     .subscribe(webduinosystem => 
       {
         this.webduinosystem = webduinosystem

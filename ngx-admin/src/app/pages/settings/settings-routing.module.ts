@@ -5,7 +5,7 @@ import { SettingsComponent } from './settings.component';
 import { WebduinosystemsComponent } from './webduinosystems//webduinosystems.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { WebduinosystemComponent } from './webduinosystems/webduinosystem/webduinosystem.component';
-import { SensorComponent } from './sensor/sensor.component';
+//import { SensorComponent } from './sensor/sensor.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,10 +19,10 @@ const routes: Routes = [{
   }, {
     path: 'webduinosystem',
     component: WebduinosystemComponent,
-  }, {
+  }, /*{
     path: 'sensor',
     component: SensorComponent,
-  }],
+  }*/],
 }];
 
 @NgModule({

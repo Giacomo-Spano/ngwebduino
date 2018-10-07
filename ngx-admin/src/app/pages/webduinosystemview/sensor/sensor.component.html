@@ -1,9 +1,4 @@
-<div *ngIf="sensorid" class="main details">
-      <div class="title">
-          Sensore: {{ sensor.name }}
-      </div>
-      <div class="description">
-            {{ sensor.statustext }} - {{ sensor.status }}
-      </div>
-  </div>
-  
+<div  *ngIf="sensor" >
+            Sensore: [{{ sensor.id }}] {{ sensor.name }} ({{ sensor.type }})
+            {{ sensor.statustext }} - {{ sensor.status }} {{ sensor.valuetext }} 
+</div>

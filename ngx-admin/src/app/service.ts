@@ -1,7 +1,8 @@
 export class Service {
     id: number;
-    webduinosystemid: number;
+    serviceid: number;
     name: string;
-    type: string;
-    param: string; 
+    webduinosystemid: number;
+    //actioncommandlist: 
+
   }

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { WebduinosystemService } from '../../../../webduinosystem.service';
+import { WebduinoService } from '../../../../webduino.service';
 import { Webduinosystem } from '../../../../webduinosystem';
 import { WebduinosystemType } from '../../../../webduinosystemtype';
 import { LocalDataSource } from 'ng2-smart-table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalComponent } from '../../../ui-features/modals/modal/modal.component';
+//import { ModalComponent } from '../../../ui-features/modals/modal/modal.component';
 import { Alertmessage } from '../../../../alertmessage';
 
 @Component({
@@ -156,7 +156,7 @@ export class WebduinosystemComponent {
     }
   }
 
-  constructor(private webduinosystemService: WebduinosystemService,
+  constructor(private webduinosystemService: WebduinoService,
                 private route: ActivatedRoute,
                 private router: Router,
                 private modalService: NgbModal,
@@ -196,9 +196,9 @@ export class WebduinosystemComponent {
   }
 
   showLargeModal(): void {
-    const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
+    //const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
 
-    activeModal.componentInstance.modalHeader = 'Largexx Modal';
+    //activeModal.componentInstance.modalHeader = 'Largexx Modal';
   }
 
   onCancel(): void {

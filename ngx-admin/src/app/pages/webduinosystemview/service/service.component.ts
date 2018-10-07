@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Service } from '../../../service';
+import { WebduinoService } from '../../../webduino.service';
 
 @Component({
   selector: 'ngx-service',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceComponent implements OnInit {
 
-  constructor() { }
+  @Input() serviceid: number;
+  service : Service;
 
-  ngOnInit() {
+  constructor(private webduinosystemService: WebduinoService,) 
+  {
   }
 
+  ngOnInit() {
+
+    this.webduinosystemService.getService(this.serviceid)
+      .subscribe(service => {
+        this.service = service;
+      });
+    
+  }
 }
+

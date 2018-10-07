@@ -1,8 +1,7 @@
 
 export class WebduinosystemService {
-  [x: string]: any;
     id: number;
-    sensorid: number;
+    serviceid: number;
     webduinosystemid: number;
     name: string;
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Sensor } from '../../../sensor';
 import { SensorType } from '../../../sensortype';
-import { WebduinosystemService } from '../../../webduinosystem.service';
+import { WebduinoService } from '../../../webduino.service';
 import { MessageService } from '../../../message.service';
 import { Router } from '@angular/router';
 import { Webduinosystem } from '../../../webduinosystem';
@@ -95,7 +95,7 @@ export class SensorsComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
   
-  constructor(private webduinosystemService: WebduinosystemService,
+  constructor(private webduinosystemService: WebduinoService,
     private messageService: MessageService,
     private router: Router) {
 

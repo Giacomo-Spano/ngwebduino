@@ -1,10 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { NbThemeService } from '@nebular/theme';
-import { takeWhile } from 'rxjs/operators/takeWhile' ;
-import { WebduinosystemService } from '../../webduinosystemservice';
-import { MessageService } from '../../message.service';
-import { Router } from '@angular/router';
-import { Sensor } from '../../sensor';
+import { SensorComponent } from './sensor/sensor.component';
 
 interface CardSettings {
   title: string;
@@ -23,7 +18,7 @@ interface CardSettings {
 export class WebduinosystemviewComponent implements OnInit {
   
   id: number;
-  sensor: Sensor;
+  //sensor: Sensor;
 
   
   constructor(

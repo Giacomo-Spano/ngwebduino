@@ -4,7 +4,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../../@theme/theme.module';
 import { SettingsRoutingModule, routedComponents } from './settings-routing.module';
 import { AlertmessageComponent } from './alertmessage/alertmessage.component';
-import { SensorComponent } from './sensor/sensor.component';
+//import { SensorComponent } from './sensor/sensor.component';
 //import { ZoneComponent } from './zone/zone.component';
 //import { ServiceComponent } from './service/service.component';
 //import { ScenarioComponent } from './scenario/scenario.component';
@@ -27,7 +27,7 @@ import { CustomEditorComponent } from './webduinosystems/webduinosystem/webduino
   declarations: [
     ...routedComponents,
     AlertmessageComponent,
-    SensorComponent,
+    //SensorComponent,
     //ZoneComponent,
     //ServiceComponent,
     //ScenarioComponent,

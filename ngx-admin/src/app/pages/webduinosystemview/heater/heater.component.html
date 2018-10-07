@@ -1,80 +1,70 @@
 
-
-
 <nb-card size="medium" class=".main">
 
-  <div class="header">My Playlist3</div>
+    <nb-card-header>Solar Energy Consumption</nb-card-header>
+    <nb-card-body *ngIf="webduinosystem"> 
+        <div class="container" >
 
 
-  <div class="details">
-      <div class="title">
-        React Native UI Kitten
-      </div>
-      <div class="description">
-        React Native UI Kitten is a framework that contains a set of commonly used UI components styled in a similar way. The most awesome thing: you can change themes on the fly by just passing a different set of variables. 100% native. Give our kitten a try!
-      </div>
-    </div>
-
-    
-    <div class="container">
-        <div class="main details">
-            <div class="title">
-                Riscaldamento
+            <div class="main details">
+                <div class="title">
+                    {{webduinosystem.name}}
+                </div>
+                <div class="description">
+                React Native UI Kitten is a framework xxx!
+                </div>
             </div>
-            <div class="description">
-              React Native UI Kitten is a framework that contains a set of commonly used UI components styled in a similar way. The most awesome thing: you can change themes on the fly by just passing a different set of variables. 100% native. Give our kitten a try!
+
+            <div class="actuators details">  
+                <div class="title">Attuatori</div>
+                <div class="description" *ngIf="webduinosystem.actuators">
+                    <ul class="list">
+                        <li *ngFor="let actuator of webduinosystem.actuators">
+                            <ngx-sensor [sensorid]="actuator.sensorid">lll</ngx-sensor>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="actuators details">   
-            <div class="title">
-                Riscaldamento
+        <div class="container">
+            <div class="zones details">
+                <div class="title">Zone</div>
+                <div class="description" *ngIf="webduinosystem.zones">
+                    <ul class="list">
+                        <li *ngFor="let zone of webduinosystem.zones">
+                            <ngx-zone [zoneid]=zone.zoneid></ngx-zone>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            
-            <div class="description">         
-                <nb-list class="actuator">
-                  <nb-list-item class="contact" *ngFor="let actuator of webduinosystem.actuators">
-                    <div>
-                      <ngx-sensor [sensorid]=actuator.sensorid></ngx-sensor>                      
+
+            <div class="services details">
+                    <div class="title">Servizi</div>
+                    <div class="description" *ngIf="webduinosystem.services">
+                        <ul class="list">
+                            <li *ngFor="let service of webduinosystem.services">
+                                <ngx-service [serviceid]=service.serviceid></ngx-service>
+                            </li>
+                        </ul>
                     </div>
-                  </nb-list-item>
-                </nb-list>
-            </div>
+            </div>  
         </div>
-    </div>
-
-
-    <div class="container">
-        <div class="zones">
-            <nb-card-header>
-                <span>Zone</span>
-            </nb-card-header>
-            <nb-card-body>
-                <nb-list>
-                  <nb-list-item *ngFor="let zone of webduinosystem.zones">
-                    <div>
-                      <ngx-zone [zoneid]=zone.zoneid></ngx-zone>
-                      
+        <div class="container">
+                <div class="scenarios details">
+                    <div class="title">Scenari</div>
+                    <div class="description" *ngIf="webduinosystem.scenarios">
+                        <ul class="list">
+                            <li *ngFor="let scenario of webduinosystem.scenarios">
+                                <ngx-scenario [scenarioid]=scenario.id></ngx-scenario>
+                            </li>
+                        </ul>
                     </div>
-                  </nb-list-item>
-                </nb-list>
-              </nb-card-body>
-        </div>
-        <div class="services">
-            <nb-card-header>
-                <span>Servizi</span>
-            </nb-card-header>
-            
-        </div>  
-  </div>
-  <div class="container">
-      <div class="scenarios">
-          <nb-card-header>
-              <span>Scenari</span>
-            </nb-card-header>
-      </div>
-  </div>
+                </div>
+            </div>
 
+        
+    </nb-card-body>
 </nb-card>
 
 <nb-card size="xsmall" class="solar-card">

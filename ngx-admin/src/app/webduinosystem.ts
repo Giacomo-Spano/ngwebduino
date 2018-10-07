@@ -1,7 +1,7 @@
 import { Scenario } from "./scenario";
 import { WebduinosystemActuator } from "./webduinosystemactuator";
 import { WebduinosystemZone } from "./webduinosystemzone";
-import { WebduinosystemService } from "./webduinosystem.service";
+import { WebduinosystemService } from "./webduinosystemservice";
 
 
 export class Webduinosystem {
