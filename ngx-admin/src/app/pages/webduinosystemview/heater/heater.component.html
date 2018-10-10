@@ -1,10 +1,18 @@
+<nb-card size="xlarge" class=".main">
 
-<nb-card size="medium" class=".main">
-
-    <nb-card-header>Solar Energy Consumption</nb-card-header>
+    <nb-card-header>
+        <div class="cameras-card-header">
+            <span class="cameras-card-title">Security Cameras</span>
+            <span class="cameras-filter">
+                <nb-actions size="medium">
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                </nb-actions>
+            </span>
+          </div>
+    </nb-card-header>
     <nb-card-body *ngIf="webduinosystem"> 
-        <div class="container" >
 
+        <div class="container" >
 
             <div class="main details">
                 <div class="title">
@@ -13,6 +21,12 @@
                 <div class="description">
                 React Native UI Kitten is a framework xxx!
                 </div>
+                <nb-actions size="medium">
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                </nb-actions>
             </div>
 
             <div class="actuators details">  

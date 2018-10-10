@@ -12,6 +12,7 @@ import { ZoneComponent } from './zone/zone.component';
 import { StatusCardComponent } from './status-card/status-card.component';
 import { ServiceComponent } from './service/service.component';
 import { ScenarioComponent } from './scenario/scenario.component';
+import { NbActionsModule } from '@nebular/theme';
 
 const components = [
   WebduinosystemviewComponent,
@@ -29,6 +30,7 @@ const components = [
     WebduinoModule,
     
     //SensorComponent,
+    NbActionsModule,
   ],
   declarations: [
     ...components,

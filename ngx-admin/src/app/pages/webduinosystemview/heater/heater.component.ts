@@ -44,6 +44,11 @@ export class HeaterComponent implements OnInit {
     this.getWebduinosystem(/*this.id*/2);
   }
 
+  onClickMe() {
+    var str = 'You are my hero!';
+    str += "ggg";
+  }
+
   getWebduinosystem(id: number): void {
     this.webduinoservice.getWebduinosystem(id)
     .subscribe(webduinosystem => 
