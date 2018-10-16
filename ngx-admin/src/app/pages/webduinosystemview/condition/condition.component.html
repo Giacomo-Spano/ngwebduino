@@ -1,0 +1,41 @@
+<div >
+  <div *ngIf="condition" >
+    condition: [{{ condition.id }}] type={{ condition.type }} zoneid={{condition.zoneid}}
+
+    <div class="input-group input-group-sm" *ngIf="condition.type">
+        <div class="col-md-8 input-group-sm">
+            <select [(ngModel)]="condition.type" class="form-control"  >
+              <option *ngFor="let type of types" [value]="type.value">{{type.name}} ++</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="input-group input-group-sm" *ngIf="webduinosystem">
+        <div class="col-md-8 input-group-sm">
+            <select [(ngModel)]="condition.zoneid" class="form-control" (change)="zoneidChanged($event)">
+              <option *ngFor="let zone of webduinosystem.zones" [value]="zone.zoneid">{{zone.name}} - {{zone.zoneid}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="input-group input-group-sm" *ngIf="webduinosystem">
+            <div class="col-md-8 input-group-sm">
+                <select [(ngModel)]="condition.zonesensorid" class="form-control" >
+                  <option *ngFor="let zonesensor of zone.zonesensors" [value]="zonesensor.sensorid">{{zonesensor.name}} - {{zonesensor.sensorid}}</option>
+                </select>
+            </div>
+        </div>
+    
+
+
+  </div>
+  <div *ngIf="condition.type=='zonesensorvalue'" >
+      zonesensorvalue 
+  </div>
+  <div *ngIf="condition.type=='zonesensorstatus'" >
+      zonesensorstatus 
+  </div>
+  <div *ngIf="condition.type=='triggerstatus'" >
+      triggerstatus 
+  </div>
+</div>

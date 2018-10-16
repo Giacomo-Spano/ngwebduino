@@ -1,11 +1,56 @@
+<nb-accordion>
+        <nb-accordion-item>
+          <nb-accordion-item-header>
+            Product Details
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+            Originally, nebula was a name for any diffuse astronomical object,
+            including galaxies beyond the Milky Way.
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      
+        <nb-accordion-item>
+          <nb-accordion-item-header>
+            Reviews
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+            Originally, nebula was a name for any diffuse astronomical object,
+            including galaxies beyond the Milky Way.
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      
+        <nb-accordion-item disabled="true">
+          <nb-accordion-item-header>
+            Edit
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+            A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
+            Originally, nebula was a name for any diffuse astronomical object,
+            including galaxies beyond the Milky Way.
+          </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+
+
+
+
+
 <nb-card size="xlarge" class=".main">
+
+        
+
+
+
+
 
     <nb-card-header>
         <div class="cameras-card-header">
             <span class="cameras-card-title">Security Cameras</span>
             <span class="cameras-filter">
                 <nb-actions size="medium">
-                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action ><a href="https://www.w3schools.com">Visit W3Schools.com!</a></nb-action>
                 </nb-actions>
             </span>
           </div>
@@ -21,6 +66,8 @@
                 <div class="description">
                 React Native UI Kitten is a framework xxx!
                 </div>
+                <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
+                <button routerLink="heaterx">Go to sidekicks</button>
                 <nb-actions size="medium">
                     <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
                     <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
@@ -70,7 +117,7 @@
                     <div class="description" *ngIf="webduinosystem.scenarios">
                         <ul class="list">
                             <li *ngFor="let scenario of webduinosystem.scenarios">
-                                <ngx-scenario [scenarioid]=scenario.id></ngx-scenario>
+                                <ngx-scenario #newHero (click)="onClickMe(newHero)" [scenarioid]=scenario.id [webduinosystem]=webduinosystem></ngx-scenario>
                             </li>
                         </ul>
                     </div>

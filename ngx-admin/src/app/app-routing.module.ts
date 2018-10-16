@@ -1,5 +1,5 @@
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {
   NbAuthComponent,
   NbLoginComponent,
@@ -52,6 +52,7 @@ const config: ExtraOptions = {
 @NgModule({
   imports: [RouterModule.forRoot(routes, config)],
   exports: [RouterModule],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppRoutingModule {
 }

@@ -15,6 +15,7 @@ import { ServicesComponent } from './services/services.component';
 import { WebduinosystemactuatorsComponent } from './webduinosystems/webduinosystem/webduinosystemactuators/webduinosystemactuators.component';
 import { CustomRenderComponent } from './webduinosystems/webduinosystem/webduinosystemactuators/custom-render.component';
 import { CustomEditorComponent } from './webduinosystems/webduinosystem/webduinosystemactuators/custom-editor.component';
+import { WebduinosystemscenariosComponent } from './webduinosystems/webduinosystem/webduinosystemscenarios/webduinosystemscenarios.component';
 
 
 
@@ -38,6 +39,7 @@ import { CustomEditorComponent } from './webduinosystems/webduinosystem/webduino
     WebduinosystemactuatorsComponent,
     CustomRenderComponent,
     CustomEditorComponent,
+    WebduinosystemscenariosComponent,
   ],
   entryComponents: [
     CustomRenderComponent,

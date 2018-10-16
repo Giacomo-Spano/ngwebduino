@@ -1,0 +1,62 @@
+<div *ngIf="!cardview">
+    <div *ngIf="timerange">Fascia oraria [{{ timerange.id }}]
+    </div>
+    <div class="input-group input-group-sm">
+      <div class="col-md-8 input-group-sm">
+        <input type="text" placeholder="Small Input" class="form-control" [(ngModel)]="timerange.name" [value]="timerange.name" />
+      </div>
+    </div>
+    <div class="input-group input-group-sm">
+        <div class="col-md-4 input-group-sm">
+          <input type="text" placeholder="Small Input" class="form-control" [value]="timerange.starttime"/>
+        </div>
+        <div class="col-md-4 input-group-sm">
+            <input type="text" placeholder="Small Input" class="form-control" [value]="timerange.endtime"/>
+          </div>
+    </div>  
+    ---------------------
+    <div *ngIf="timerange.actions">
+        <ul class="list">
+          <li *ngFor="let condition of timerange.conditions">
+            <ngx-condition [condition]=condition [webduinosystemid]=webduinosystemid [cardview]=false></ngx-condition>
+          </li>
+        </ul>
+    </div>
+    <div *ngIf="timerange.conditions">
+        <ul class="list">
+          <li *ngFor="let action of timerange.actions">
+            <ngx-action [action]=action [webduinosystemid]=webduinosystemid [cardview]=false></ngx-action>
+          </li>
+        </ul>
+    </div>
+</div>
+
+<div *ngIf="cardview">
+  <div *ngIf="timerange" >
+      
+      <div class="form-group row">
+          <label for="inputEmail1" class="col-sm-2 col-form-label">Dalle:</label>
+          <div class="col-sm-3">
+            <ngb-timepicker [(ngModel)]="starttime" ></ngb-timepicker>
+          </div>
+          <label for="inputEmail1" class="col-sm-2 col-form-label">Alle:</label>
+          <div class="col-sm-3">
+            <ngb-timepicker [(ngModel)]="endtime" id="inputEmail2"></ngb-timepicker>
+          </div>
+      </div>  
+
+      <div class="form-group row">
+        <label for="inputID" class="col-sm-3 col-form-label">ID</label>
+        <div class="col-sm-9">
+          <input [(ngModel)]="timerange.id" [value]="timerange.id" type="text" class="form-control" id="inputID" placeholder="ID" disabled>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+          <input [(ngModel)]="timerange.name" type="text" class="form-control" id="inputName" placeholder="Name">
+        </div>
+      </div>
+
+  </div>
+</div>

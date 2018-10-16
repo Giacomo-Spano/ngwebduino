@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ScenarioComponent } from '../../settings/scenario/scenario.component';
+import { ScenarioComponent } from './scenario.component';
+//import { ScenarioComponent } from '../../webdui/scenario/scenario.component';
 
 
 describe('ScenarioComponent', () => {

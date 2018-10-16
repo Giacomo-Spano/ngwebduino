@@ -5,7 +5,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { NbThemeService } from '@nebular/theme';
 import { Webduinosystem } from '../../../webduinosystem';
+//import { Scenario } from '../../../scenario';
+import { ScenarioComponent } from '../scenario/scenario.component';
 //import { Webduinosystem } from '../../../webduinosystem';
+//import {Router} from '@angular/router';
 
 interface CardSettings {
   title: string;
@@ -44,9 +47,11 @@ export class HeaterComponent implements OnInit {
     this.getWebduinosystem(/*this.id*/2);
   }
 
-  onClickMe() {
+  onClickMe(scenariox: ScenarioComponent) {
+    //var values += event.target.value + ' | ';
     var str = 'You are my hero!';
     str += "ggg";
+    this.router.navigate(['/pages/scenario/' + scenariox.scenarioid]);
   }
 
   getWebduinosystem(id: number): void {

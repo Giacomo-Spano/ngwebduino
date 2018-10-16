@@ -1,0 +1,14 @@
+<div >
+    <div *ngIf="action" >
+    action: [{{ action.id }}] {{ action.sensorid }}
+
+    <div class="input-group input-group-sm">
+      <div class="col-md-8 input-group-sm">
+        <select [(ngModel)]="action.sensorid" class="form-control" id="actuator" >
+          <option *ngFor="let actuator of webduinosystem.actuators" [value]="actuator.sensorid">{{actuator.name}} - {{actuator.sensorid}}</option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -15,9 +15,11 @@ import { ServiceComponent } from './webduinosystemview/service/service.component
 //import { ZoneComponent } from './webduinosystemview/zone/zone.component';
 //import { ServiceComponent } from './service/service.component';
 //import { ScenarioComponent } from './scenario/scenario.component';
+//import { HeaterComponent } from './webduinosystemview/heater/heater.component';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
+  /*HeaterComponent,*/
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const PAGES_COMPONENTS = [
     //ZoneComponent,
     //ServiceComponent,
     //ScenarioComponent,
+    //HeaterComponent,
 
   ],
   declarations: [
@@ -46,9 +49,14 @@ const PAGES_COMPONENTS = [
     ZoneComponent,
     ServiceComponent,
     ScenarioComponent, */
+    //HeaterComponent,
+    //SensorComponent,
+    //ZoneComponent,
+    //ServiceComponent,
+    //ScenarioComponent,
   ],
-  exports: [ WebduinodashboardComponent/*, SensorComponent*/],
-  //schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  exports: [ WebduinodashboardComponent/*, SensorComponent*//*, HeaterComponent*/],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class PagesModule {
 }

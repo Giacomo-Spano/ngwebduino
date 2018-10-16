@@ -1,0 +1,71 @@
+<div *ngIf="!cardview" >
+    <div *ngIf="program" class="block_container">
+      
+      <div>
+        <div >Programma [{{program.id}}]
+        </div>
+        <div class="input-group input-group-sm">
+          <div class="col-md-8 input-group-sm">
+            <input type="text" placeholder="Small Input" class="form-control" [value]="program.name"/>
+          </div>
+        
+          <div class="col-md-12 input-group-sm">
+            <nb-checkbox>Lu</nb-checkbox>
+            <nb-checkbox>Ma</nb-checkbox>
+            <nb-checkbox>Me</nb-checkbox>
+            <nb-checkbox>Gi</nb-checkbox>
+            <nb-checkbox>Ve</nb-checkbox>
+            <nb-checkbox>Sa</nb-checkbox>
+            <nb-checkbox>Do</nb-checkbox>
+          </div>
+        </div>
+        <div *ngIf="program.timeranges">
+            <ul class="list">
+              <li *ngFor="let timerange of program.timeranges">
+                <ngx-timerange [timerange]=timerange [webduinosystemid]=webduinosystemid [cardview]=false (change)="onTimereangeChange($event)"></ngx-timerange>
+              </li>
+            </ul>
+        </div>
+      </div>
+       
+      <div>
+        <nb-actions size="small">
+          <nb-action icon="ion-edit" (click)="onClickMe()"></nb-action>
+          <nb-action icon="ion-trash-b" (click)="onClickMe()"></nb-action>
+          <nb-action icon="ion-checkmark" (click)="onSave()"></nb-action>
+         </nb-actions>
+      </div>   
+  </div>
+</div>
+
+<div *ngIf="cardview">
+  <div *ngIf="program" >
+            
+
+            <div class="form-group row">
+                <label for="inputID" class="col-sm-3 col-form-label">ID</label>
+                    <div class="col-sm-9">
+                        <input [(ngModel)]="program.id" [value]="program.id" type="text" class="form-control" id="inputID" placeholder="ID" disabled>
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                        <input [(ngModel)]="program.name" type="text" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+            </div>
+
+            <div class="title">Fasce orarie</div>
+                    
+              <div class="description" *ngIf="program.timeranges">
+                <ul class="list">
+                  <li *ngFor="let timerange of program.timeranges">
+                    <ngx-timerange [timerange]=timerange [cardview]=true></ngx-timerange>
+                  </li>
+                </ul>
+              </div>
+
+            <!-- <button nbButton size="xsmall" (click)="onClickMe()">x-small</button> -->
+
+  </div>
+</div>

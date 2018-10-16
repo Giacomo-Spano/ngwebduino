@@ -1,3 +1,5 @@
+import { Program } from "./program";
+
 export class Scenario {
     id: number;
     webduinosystemid: number;
@@ -8,4 +10,5 @@ export class Scenario {
     startdate: Date;
     enddata: Date;
     priority: number; 
+    programs: Program[];
   }

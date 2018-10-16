@@ -13,6 +13,7 @@ import { WebduinosystemActuator } from './webduinosystemactuator';
 import { Zone } from './zone';
 import { Service } from './service';
 import { Scenario } from './scenario';
+import { Program } from './program';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -86,6 +87,38 @@ export class WebduinoService {
       catchError(this.handleError<Scenario>(`getScenario id=${id}`))
     );
   }
+
+  updateScenario(scenario: Scenario): Observable<any> {
+    const url = this.webduinosystemUrl + '?data=webduinosystemscenario';
+ 
+    //return this.http.post(url, webduinosystem, options)
+    return this.http.post(url, scenario, httpOptions)
+    .pipe(
+       tap(_ => this.log(`updated scenario id=${scenario.id}`)),
+       catchError(this.handleError<any>('updatescenario'))
+     );
+   }
+
+   getProgram(id: number): Observable<Program> {
+    const url = `${this.webduinosystemUrl}` + '?requestcommand=program&id=' + `${id}`;
+    return this.http.get<Program>(url).pipe(
+      tap(_ => this.log(`fetched program id=${id}`)),
+      catchError(this.handleError<Program>(`getProgram id=${id}`))
+    );
+  }
+
+  updateProgram(program: Program): Observable<any> {
+    const url = this.webduinosystemUrl + '?data=program';
+ 
+    return this.http.post(url, program, httpOptions)
+    .pipe(
+       tap(_ => this.log(`updated program id=${program.id}`)),
+       catchError(this.handleError<any>('updateprogram'))
+     );
+   }
+
+
+
 
   updateSensor(sensor: Sensor): Observable<any> {
     const url = this.webduinosystemUrl + '?data=sensor';

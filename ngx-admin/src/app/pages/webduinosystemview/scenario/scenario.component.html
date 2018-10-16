@@ -1,6 +1,49 @@
-<div *ngIf="scenario" >
-    scenario: [{{ scenario.id }}] {{ scenario.name }} 
+<!-- negated variable to achieve "if not" -->
+<div *ngIf="cardview">
+    <div *ngIf="scenario" >
+        <nb-card size="xlarge" class="Scenario">
+            <nb-card-header>Scenario: {{scenario.name}}</nb-card-header>
+            <nb-card-body>
+
+                <ngx-alertmessage [alertmessage]="alertmessage"></ngx-alertmessage>
+
+                <div class="form-group row">
+                    <label for="inputID" class="col-sm-3 col-form-label">ID</label>
+                        <div class="col-sm-9">
+                            <input [(ngModel)]="scenario.id" [value]="scenario.id" type="text" class="form-control" id="inputID" placeholder="ID" disabled>
+                        </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input [(ngModel)]="scenario.name" type="text" class="form-control" id="inputName" placeholder="Name" size="small">
+                        </div>
+                </div>
+
+                <div class="title">Programmi</div>
+                    
+                        <div class="description" *ngIf="scenario.programs">
+                            <ul class="list">
+                                <li *ngFor="let program of scenario.programs">
+                                    <ngx-program (onprogramclick)='onProgramClick($event)' [program]=program [webduinosystemid]=scenario.webduinosystemid [cardview]=false></ngx-program>
+                                </li>
+                            </ul>
+                        </div>
+            
+                <button class="btn btn-primary" (click)="onSave()">Salva</button>
+                
+            </nb-card-body>
+        </nb-card>
+    </div>
 </div>
+      
+<!-- logic && operator -->
+<div *ngIf="!cardview">
+    <div *ngIf="scenario" >
+            scenario: [{{ scenario.id }}] {{ scenario.name }}
+    </div>
+</div>
+     
 
 
 

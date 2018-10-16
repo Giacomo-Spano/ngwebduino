@@ -20,11 +20,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Riscaldamento',
-        link: '/pages/webduinosystemview/heater',
+        link: './heater',
       },
       {
         title: 'prova',
-        link: '/pages/webduinosystemview/dashboard',
+        link: './heater',
       },
     ],
   },
