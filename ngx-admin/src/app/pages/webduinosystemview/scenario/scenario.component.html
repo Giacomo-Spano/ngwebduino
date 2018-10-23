@@ -25,11 +25,12 @@
                         <div class="description" *ngIf="scenario.programs">
                             <ul class="list">
                                 <li *ngFor="let program of scenario.programs">
-                                    <ngx-program (onprogramclick)='onProgramClick($event)' [program]=program [webduinosystemid]=scenario.webduinosystemid [cardview]=false></ngx-program>
+                                    <ngx-program (onprogramclick)='onProgramClick($event)' (change)="onProgramChange($event)" [program]=program [webduinosystemid]=scenario.webduinosystemid [cardview]=false></ngx-program>
                                 </li>
                             </ul>
                         </div>
             
+                <button class="btn btn-primary" (click)="onAdd()">Aggiungi</button>                        
                 <button class="btn btn-primary" (click)="onSave()">Salva</button>
                 
             </nb-card-body>

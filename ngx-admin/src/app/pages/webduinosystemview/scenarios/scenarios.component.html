@@ -1,0 +1,24 @@
+<div *ngIf="edit">
+  edit
+  <button class="btn btn-primary" (click)="onAdd()">Aggiungi</button>
+  <div *ngIf="scenarios" >
+            <ul class="list">
+              <li *ngFor="let scenario of scenarios">
+                <ngx-scenario [scenario]=scenario [cardview]=true [edit]=true></ngx-scenario>
+              </li>
+            </ul>
+        <!-- <button class="btn btn-primary" (click)="onSave()">Salva</button> -->                
+  </div>
+</div>
+
+<!-- logic && operator -->
+<div *ngIf="!edit">
+  non edit
+    <div *ngIf="scenarios" >
+        <ul class="list">
+            <li *ngFor="let scenario of scenarios">
+              <ngx-scenario #scenarioref [scenario]=scenario [cardview]=false (click)="onClickScenario(scenarioref)"></ngx-scenario>
+            </li>
+          </ul>
+    </div>
+</div>

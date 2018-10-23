@@ -1,6 +1,13 @@
 <div *ngIf="!cardview">
-    <div *ngIf="timerange">Fascia oraria [{{ timerange.id }}]
+     <div class="block_container">
+      <div *ngIf="timerange">Fascia oraria [{{ timerange.id }}]</div>
+      <div>
+          <nb-actions size="small">
+            <nb-action icon="ion-trash-b" (click)="onDelete()"></nb-action>
+          </nb-actions>
+      </div>
     </div>
+    <div>
     <div class="input-group input-group-sm">
       <div class="col-md-8 input-group-sm">
         <input type="text" placeholder="Small Input" class="form-control" [(ngModel)]="timerange.name" [value]="timerange.name" />
@@ -14,18 +21,31 @@
             <input type="text" placeholder="Small Input" class="form-control" [value]="timerange.endtime"/>
           </div>
     </div>  
-    ---------------------
-    <div *ngIf="timerange.actions">
-        <ul class="list">
-          <li *ngFor="let condition of timerange.conditions">
-            <ngx-condition [condition]=condition [webduinosystemid]=webduinosystemid [cardview]=false></ngx-condition>
-          </li>
-        </ul>
+    <div class="block_container">
+        <div>CONDIZIONI</div>
+        <div><nb-actions size="small">
+            <nb-action icon="ion-plus-round" (click)="onAddCondition()"></nb-action>
+           </nb-actions>
+        </div>
     </div>
     <div *ngIf="timerange.conditions">
         <ul class="list">
+          <li *ngFor="let condition of timerange.conditions">
+            <ngx-condition (delete)="onDeleteCondition($event)" [condition]=condition [webduinosystemid]=webduinosystemid [cardview]=false></ngx-condition>
+          </li>
+        </ul>
+    </div>
+    <div class="block_container">
+        <div>AZIONI</div>
+        <div><nb-actions size="small">
+            <nb-action icon="ion-plus-round" (click)="onAddAction()"></nb-action>
+           </nb-actions>
+        </div>
+    </div>
+    <div *ngIf="timerange.actions">
+        <ul class="list">
           <li *ngFor="let action of timerange.actions">
-            <ngx-action [action]=action [webduinosystemid]=webduinosystemid [cardview]=false></ngx-action>
+            <ngx-action (delete)="onDeleteCondition($event)" [action]=action [webduinosystemid]=webduinosystemid [cardview]=false></ngx-action>
           </li>
         </ul>
     </div>
@@ -33,7 +53,7 @@
 
 <div *ngIf="cardview">
   <div *ngIf="timerange" >
-      
+      yyy
       <div class="form-group row">
           <label for="inputEmail1" class="col-sm-2 col-form-label">Dalle:</label>
           <div class="col-sm-3">

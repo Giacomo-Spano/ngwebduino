@@ -1,13 +1,86 @@
 <div >
-    <div *ngIf="action" >
-    action: [{{ action.id }}] {{ action.sensorid }}
+    <div *ngIf="action" >    
+    <div class="block_container">
+      <div>action: [{{ action.id }}] {{ action.sensorid }}</div>
+        <div>
+          <nb-actions size="small">
+            <nb-action icon="ion-trash-b" (click)="onDelete()"></nb-action>
+          </nb-actions>
+        </div>
+    </div>   
 
-    <div class="input-group input-group-sm">
-      <div class="col-md-8 input-group-sm">
-        <select [(ngModel)]="action.sensorid" class="form-control" id="actuator" >
-          <option *ngFor="let actuator of webduinosystem.actuators" [value]="actuator.sensorid">{{actuator.name}} - {{actuator.sensorid}}</option>
-        </select>
+    <div class="input-group input-group-sm" *ngIf="action.type" (change)="typeChanged($event)">
+        <label for="inputID" class="col-sm-3 col-form-label">Azione:</label>
+        <div class="col-sm-8 input-group-sm">
+            <select [(ngModel)]="action.type" class="form-control"  >
+              <option *ngFor="let type of types" [value]="type.value">{{type.name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="action.type=='actuator'" >
+        <div class="input-group input-group-sm" *ngIf="webduinosystem.actuators">
+            <label for="inputID" class="col-sm-3 col-form-label">Sensore: {{action.sensorid}}</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="action.sensorid" class="form-control" (change)="sensoridChanged($event)">
+                <option *ngFor="let actuator of webduinosystem.actuators" [value]="actuator.sensorid">[{{actuator.id}}][{{actuator.sensorid}}].{{actuator.name}}</option>
+                </select>
+            </div>
+        </div>
+        
+    <div *ngIf="sensor.actioncommandlist">    
+      <div class="input-group input-group-sm" >
+      <label for="inputID" class="col-sm-3 col-form-label">Comando: {{action.actioncommand}}</label>
+        <div class="col-sm-8 input-group-sm">
+          <select class="form-control" [(ngModel)]="action.actioncommand" (change)="actioncommandChanged($event)">
+            <option *ngFor="let command of sensor.actioncommandlist" [value]="command.command">{{command.name}} - {{command.command}}</option>
+          </select>
+        </div>
       </div>
+      
+      <div class="input-group input-group-sm" *ngIf="actioncommand.zone">
+          <label for="inputID" class="col-sm-3 col-form-label">Zona: [{{action.zoneid}}].{{zone.name}} </label>
+          <div class="col-sm-8 input-group-sm">
+            <select class="form-control" [(ngModel)]="action.zoneid" (change)="zoneidChanged($event)">
+              <option *ngFor="let wzone of webduinosystem.zones" [value]="action.zoneid">[{{wzone.id}}].{{wzone.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="input-group input-group-sm" *ngIf="actioncommand.zone">
+          <label for="inputID" class="col-sm-3 col-form-label">Sensore: [{{action.zonesensorid}}] </label>
+          <div class="col-sm-8 input-group-sm">
+            <select class="form-control" [(ngModel)]="action.zonesensorid">
+              <option *ngFor="let zonesensorid of zone.zonesensors" [value]="action.zonesensorid">[{{zonesensorid.id}}].{{zonesensorid.name}}-{{sensor.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group input-group-sm" *ngIf="actioncommand.targetvalue">
+          <label for="inputID" class="col-sm-3 col-form-label">{{actioncommand.targetname}}:</label>
+          <div class="col-sm-8 input-group-sm">
+            <input type="number" placeholder="Small Input" class="form-control" [(ngModel)]="action.value" [value]="action.value"/>
+        </div>
+      </div>
+
+
+    </div>  
+
+        <!--<div class="input-group input-group-sm" *ngIf="actioncommand.haszone">
+            <label for="inputID" class="col-sm-3 col-form-label">Zona:</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="action.zoneid" class="form-control" (change)="zoneidChanged($event)">
+                <option *ngFor="let zone of webduinosystem.zones" [value]="zone.zoneid">[{{zone.id}}][{{zone.zoneid}}].{{zone.name}}</option>
+                </select>
+            </div>
+            <label for="inputID" class="col-sm-3 col-form-label">Sensore:</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="action.sensorid" class="form-control" (change)="sensoridChanged($event)">
+                <option *ngFor="let zonesensor of zone.zonesensors" [value]="zonesensor.sensorid">[{{zonesensor.id}}][{{zonesensor.sensorid}}].{{zonesensor.name}}</option>
+                </select>
+            </div>      
+
+        </div> -->
+
     </div>
 
   </div>

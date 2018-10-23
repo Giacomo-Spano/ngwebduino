@@ -10,10 +10,14 @@ import { MessageService } from './message.service';
 import { SensorType } from './sensortype';
 import { Sensor } from './sensor';
 import { WebduinosystemActuator } from './webduinosystemactuator';
-import { Zone } from './zone';
+//import { Zone } from './zone';
 import { Service } from './service';
 import { Scenario } from './scenario';
 import { Program } from './program';
+import { Trigger } from './trigger';
+import { Zone } from './zone';
+import { ZoneSensor } from './zonesensor';
+//import { ZoneSensor } from './zonesensor';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -45,6 +49,22 @@ export class WebduinoService {
             );
   }
 
+  getTriggers (): Observable<Trigger[]> {
+    return this.http.get<Trigger[]>(this.webduinosystemUrl + '?requestcommand=triggers')
+      .pipe(
+        tap(triggers => this.log('fetched triggers')),
+        catchError(this.handleError('triggers', []))
+      );
+  }
+
+  getTrigger(id: number): Observable<Trigger> {
+    const url = `${this.webduinosystemUrl}` + '?requestcommand=trigger&id=' + `${id}`;
+    return this.http.get<Trigger>(url).pipe(
+      tap(_ => this.log(`fetched trigger id=${id}`)),
+      catchError(this.handleError<Trigger>(`getTrigger id=${id}`))
+    );
+  }
+
   /** GET sensors from the server */
   getSensors (): Observable<Sensor[]> {
     return this.http.get<Sensor[]>(this.webduinosystemUrl + '?requestcommand=sensors')
@@ -69,6 +89,14 @@ export class WebduinoService {
     return this.http.get<Zone>(url).pipe(
       tap(_ => this.log(`fetched zone id=${id}`)),
       catchError(this.handleError<Zone>(`getZone id=${id}`))
+    );
+  }
+
+  getZoneSensor(zoneid:number, id: number): Observable<ZoneSensor> {
+    const url = `${this.webduinosystemUrl}` + '?requestcommand=zonesensor&zoneid=' + zoneid + '&zonesensorid=' + `${id}`;
+    return this.http.get<ZoneSensor>(url).pipe(
+      tap(_ => this.log(`fetched zone id=${id}`)),
+      catchError(this.handleError<ZoneSensor>(`getZoneSensor id=${id}`))
     );
   }
 
@@ -245,9 +273,9 @@ export class WebduinoService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.error(error.error); // log to console instead
 
-      window.alert('error: ' + error);
+      window.alert('error: ' + error.error);
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);

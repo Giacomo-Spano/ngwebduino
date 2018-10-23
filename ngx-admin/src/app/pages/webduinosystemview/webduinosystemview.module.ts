@@ -9,15 +9,15 @@ import { ShieldComponent } from './shields/shield/shield.component';
 import { WebduinoModule } from '../webduino/webduino.module';
 import { SensorComponent } from './sensor/sensor.component';
 import { ZoneComponent } from './zone/zone.component';
-import { StatusCardComponent } from './status-card/status-card.component';
 import { ServiceComponent } from './service/service.component';
 import { ScenarioComponent } from './scenario/scenario.component';
 import { NbActionsModule } from '@nebular/theme';
-import { HeaterComponent } from './heater/heater.component';
+//import { WebduinosystemComponent } from './heater/heater.component';
 import { ProgramComponent } from './program/program.component';
 import { TimerangeComponent } from './timerange/timerange.component';
 import { ConditionComponent } from './condition/condition.component';
 import { ActionComponent } from './action/action.component';
+import { ScenariosComponent } from './scenarios/scenarios.component';
 
 const components = [
   WebduinosystemviewComponent,
@@ -40,7 +40,6 @@ const components = [
   declarations: [
     ...components,
     //HeaterComponent,
-    StatusCardComponent,
     ShieldsComponent,
     ShieldComponent,
     ProgramComponent,
@@ -50,7 +49,7 @@ const components = [
     //SensorComponent,
     //ZoneComponent,
     //ServiceComponent,
-    //ScenarioComponent,
+    ScenariosComponent,
     //HeaterComponent,
   ],
   entryComponents: [

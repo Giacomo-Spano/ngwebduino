@@ -4,7 +4,7 @@ import { SensorComponent } from './sensor.component';
 import { ZoneComponent } from '../zone/zone.component';
 import { ScenarioComponent } from '../scenario/scenario.component';
 import { ServiceComponent } from '../service/service.component';
-import { HeaterComponent } from '../heater/heater.component';
+//import { HeaterComponent } from '../heater/heater.component';
 import { ProgramComponent } from '../program/program.component';
 import { TimerangeComponent } from '../timerange/timerange.component';
 import { ActionComponent } from '../action/action.component';
@@ -12,6 +12,8 @@ import { ConditionComponent } from '../condition/condition.component';
 
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NbAccordionModule } from '@nebular/theme';
+import { ScenariosComponent } from '../scenarios/scenarios.component';
+import { WebduinosystemComponent } from '../webduinosystem/webduinosystem.component';
 
 const components = [
   //HeaterComponent,
@@ -28,8 +30,9 @@ const components = [
     SensorComponent,
     ZoneComponent,
     ScenarioComponent,
+    ScenariosComponent,
     ServiceComponent,
-    HeaterComponent,
+    WebduinosystemComponent,
     ProgramComponent,
     TimerangeComponent,
     ActionComponent,
@@ -41,8 +44,9 @@ const components = [
     SensorComponent,
     ZoneComponent,
     ScenarioComponent,
+    ScenariosComponent,
     ServiceComponent,
-    HeaterComponent,
+    WebduinosystemComponent,
     ProgramComponent,
   ],
   schemas: [ 

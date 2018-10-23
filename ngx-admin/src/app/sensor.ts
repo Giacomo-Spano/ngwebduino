@@ -1,3 +1,7 @@
+import { Command } from "./command";
+import { Status } from "./status";
+import { ActionCommand } from "./actioncommand";
+
 export class Sensor {
     id: number;
     shieldid: number;
@@ -11,4 +15,6 @@ export class Sensor {
     status: string;
     statustext: string;
     valuetext: string
+    statuslist: string[];
+    actioncommandlist: ActionCommand[];
   }

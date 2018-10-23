@@ -26,7 +26,8 @@ export class WebduinosystemComponent {
   //selectedMessage : MessagesComponent;
   alertmessage: Alertmessage = {
     show: false,
-    name: 'Windstorm2'
+    name: 'Windstorm2',
+    message: 'message',
   };  
 
   actuatorsettings = {

@@ -18,7 +18,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WebduinoModule } from './pages/webduino/webduino.module';
 //import { HeaterModule } from './pages/webduinosystemview/heater/heater.module';
-import { HeaterComponent } from './pages/webduinosystemview/heater/heater.component';
+//import { HeaterComponent } from './pages/webduinosystemview/heater/heater.component';
 
 //import { HeaterComponent } from './pages/webduinosystemview/heater/heater.component';
 import { ScenarioComponent } from './pages/webduinosystemview/scenario/scenario.component';
@@ -27,10 +27,17 @@ import { ZoneComponent } from './pages/webduinosystemview/zone/zone.component';
 import { ServiceComponent } from './pages/webduinosystemview/service/service.component';
 //import { SensorModule } from './pages/webduinosystemview/sensor/sensor.module';
 import { CommonModule } from './pages/webduinosystemview/sensor/common.module';
+//import { ScenariosComponent } from './scenarios/scenarios.component';
+//import {ngNumberPicker} from '@angular-number-picker';
+
+//import { NumberPickerComponent } from 'angular2-number-picker/components';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    //ScenariosComponent,
+    //NumberPickerComponent,
     //HeaterComponent,
     //SensorComponent,
     //ZoneComponent,
@@ -50,6 +57,7 @@ import { CommonModule } from './pages/webduinosystemview/sensor/common.module';
     //DashboardComponent,
    //WebduinodashboardComponent,
     //HeaterComponent,
+    //ngNumberPicker,
     
     
     NgbModule.forRoot(),

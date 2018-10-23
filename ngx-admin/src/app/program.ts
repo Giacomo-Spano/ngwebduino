@@ -16,7 +16,29 @@ export class Program {
     timeranges: Timerange[];
     activetimerange: Object;
 
+    /*constructor() {
+
+    }*/
+
     constructor(obj: any ) {
+      
+      if (obj == null) {
+        this.id = 0;
+        this.name = "new program";
+        this.scenarioid = 0;
+        this.description = "descrizione";
+        this.enabled = true;
+        this.sunday = true;
+        this.monday = true;
+        this.tuesday = true;
+        this.wednesday = true;
+        this.thursday = true;
+        this.friday = true;
+        this.saturday = true;
+        return;
+      }
+
+
       this.id = obj.id;  
       this.name = obj.name; 
       this.sunday = obj.sunday;

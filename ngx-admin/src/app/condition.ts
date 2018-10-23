@@ -10,8 +10,10 @@ export class Condition {
     valueoperator: string;
     value: number;
     valueoperators: string;
- 
+    
     constructor() {
+        this.id = 0;
+        this.type = 'zonesensorvalue';
      }  
 
   }

@@ -5,10 +5,13 @@ import { PagesComponent } from './pages.component';
 import { WebduinodashboardComponent } from './webduinodashboard/webduinodashboard.component';
 //import { HeaterComponent } from './webduinosystemview/heater/heater.component';
 import { CommonModule } from './webduinosystemview/sensor/common.module';
-import { HeaterComponent } from './webduinosystemview/heater/heater.component';
+//import { HeaterComponent } from './webduinosystemview/heater/heater.component';
 import { Webduinosystem } from '../webduinosystem';
 import { ScenarioComponent } from './webduinosystemview/scenario/scenario.component';
 import { ProgramComponent } from './webduinosystemview/program/program.component';
+import { ScenariosComponent } from './webduinosystemview/scenarios/scenarios.component';
+import { WebduinosystemComponent } from './webduinosystemview/webduinosystem/webduinosystem.component';
+//import { WebduinosystemComponent } from './settings/webduinosystems/webduinosystem/webduinosystem.component';
 //import { HeaterComponent } from './webduinosystemview/heater/heater.component';
 
 const routes: Routes = [{
@@ -24,12 +27,16 @@ const routes: Routes = [{
   },
   {
     path: 'heater',
-    component: HeaterComponent,
+    component: WebduinosystemComponent,
   },
   /*{
     path: 'scenario',
     component: ScenarioComponent,
   },*/
+  {
+    path: 'scenarios',
+    component: ScenariosComponent,
+  },
   {
     path: 'scenario/:id',
     component: ScenarioComponent,

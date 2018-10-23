@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, SimpleChanges, OnChanges, DoCheck, Ch
 import { Timerange } from '../../../timerange';
 import { Scenario } from '../../../scenario';
 import { Webduinosystem } from '../../../webduinosystem';
+import { Condition } from '../../../condition';
+import { Action } from '../../../action';
 
 @Component({
   selector: 'ngx-timerange',
@@ -16,8 +18,7 @@ export class TimerangeComponent implements OnInit, OnChanges, DoCheck {
   @Input() webduinosystemid: number;
   @Input() cardview: boolean;
 
-  @Output()
-  change: EventEmitter<Timerange> = new EventEmitter<Timerange>();
+  @Output() change: EventEmitter<Timerange> = new EventEmitter<Timerange>();
 
   starttime = {hour: 13, minute: 30};
   endtime = {hour: 13, minute: 30};
@@ -54,4 +55,27 @@ export class TimerangeComponent implements OnInit, OnChanges, DoCheck {
     }
   }
 
+  onAddCondition(): void {
+    let condition: Condition;
+    condition = new Condition();
+    condition.timerangeid = this.timerange.id;
+    this.timerange.conditions.push(condition);
+  }
+
+  onAddAction(): void {
+    let action: Action;
+    action = new Action();
+    action.timerangeid = this.timerange.id;
+    this.timerange.actions.push(action);
+
+  }
+
+  onDelete(): void {
+
+  }
+
+  onDeleteCondition(event) {
+    let index = this.timerange.conditions.findIndex(d => d.id === event.id); //find index in your array
+    this.timerange.conditions.splice(index, 1);//remove element from array
+  }
 }

@@ -1,37 +1,94 @@
 <div >
   <div *ngIf="condition" >
-    condition: [{{ condition.id }}] type={{ condition.type }} zoneid={{condition.zoneid}}
+    <div class="block_container">
+        <div >condition: [{{ condition.id }}] type={{ condition.type }} zoneid={{condition.zoneid}}</div>
+        <div>
+            <nb-actions size="small">
+                <nb-action icon="ion-trash-b" (click)="onDelete()"></nb-action>
+            </nb-actions>
+        </div>
+    </div>    
 
-    <div class="input-group input-group-sm" *ngIf="condition.type">
-        <div class="col-md-8 input-group-sm">
+    <div class="input-group input-group-sm" *ngIf="condition.type" (change)="typeChanged($event)">
+        <label for="inputID" class="col-sm-3 col-form-label">Condizione:</label>
+        <div class="col-sm-8 input-group-sm">
             <select [(ngModel)]="condition.type" class="form-control"  >
-              <option *ngFor="let type of types" [value]="type.value">{{type.name}} ++</option>
+              <option *ngFor="let type of types" [value]="type.value">{{type.name}}</option>
             </select>
         </div>
     </div>
 
-    <div class="input-group input-group-sm" *ngIf="webduinosystem">
-        <div class="col-md-8 input-group-sm">
-            <select [(ngModel)]="condition.zoneid" class="form-control" (change)="zoneidChanged($event)">
-              <option *ngFor="let zone of webduinosystem.zones" [value]="zone.zoneid">{{zone.name}} - {{zone.zoneid}}</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="input-group input-group-sm" *ngIf="webduinosystem">
-            <div class="col-md-8 input-group-sm">
-                <select [(ngModel)]="condition.zonesensorid" class="form-control" >
-                  <option *ngFor="let zonesensor of zone.zonesensors" [value]="zonesensor.sensorid">{{zonesensor.name}} - {{zonesensor.sensorid}}</option>
+    <div *ngIf="condition.type=='zonesensorvalue' || condition.type=='zonesensorstatus'" >
+        <div class="input-group input-group-sm" *ngIf="webduinosystem.zones">
+            <label for="inputID" class="col-sm-3 col-form-label">Zona:</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="condition.zoneid" class="form-control" (change)="zoneidChanged($event)">
+                <option *ngFor="let zone of webduinosystem.zones" [value]="zone.zoneid">[{{zone.zoneid}}].{{zone.name}}</option>
                 </select>
             </div>
         </div>
+        <div class="input-group input-group-sm" *ngIf="zone.zonesensors">
+            <label for="inputID" class="col-sm-3 col-form-label">Sensore:</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="condition.zonesensorid" class="form-control" (change)="zonesensoridChanged($event)">
+                    <option *ngFor="let zonesensor of zone.zonesensors" [value]="zonesensor.id">[{{zonesensor.id}}].[{{zonesensor.sensorid}}].{{zonesensor.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="condition.type=='zonesensorvalue'" >
+
+        <div class="input-group input-group-sm" *ngIf="condition.valueoperator">
+            <label for="inputID" class="col-sm-3 col-form-label">Operatore:</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="condition.valueoperator" class="form-control"  >
+                    <option *ngFor="let operator of condition.valueoperators" [value]="condition.valueoperator">{{operator}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group input-group-sm">
+            <label for="inputID" class="col-sm-3 col-form-label">Valore:</label>
+            <div class="col-sm-8 input-group-sm">
+                <input type="number" placeholder="Small Input" class="form-control" [(ngModel)]="condition.value" [value]="condition.value"/>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="condition.type=='zonesensorstatus'" >
+
+        <div class="input-group input-group-sm" *ngIf="sensor.statuslist">
+            <label for="inputID" class="col-sm-3 col-form-label">Stato: {{condition.sensorstatus}}</label>
+                <div class="col-sm-8 input-group-sm">
+                    <select class="form-control" [(ngModel)]="condition.sensorstatus" >
+                        <option *ngFor="let sensorstatus of sensor.statuslist" [value]="sensorstatus">{{sensorstatus}}</option>
+                    </select>
+                </div>
+        </div>
+    </div>
+
+    <div *ngIf="condition.type=='triggerstatus'" >
+        <div class="input-group input-group-sm" *ngIf="triggers">
+            <label for="inputID" class="col-sm-3 col-form-label">Trigger:</label>
+            <div class="col-sm-8 input-group-sm">
+                <select [(ngModel)]="condition.triggerid" class="form-control" (change)="triggeridChanged($event)">
+                    <option *ngFor="let trigger of triggers" [value]="trigger.id">[{{trigger.id}}].{{trigger.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="input-group input-group-sm" *ngIf="trigger.statuslist">
+            <label for="inputID" class="col-sm-3 col-form-label">Stato:</label>
+                <div class="col-sm-8 input-group-sm">
+                    <select [(ngModel)]="condition.triggerstatus" class="form-control">
+                        <option *ngFor="let triggerstatus of trigger.statuslist" [value]="triggerstatus">{{triggerstatus}}</option>
+                    </select>
+                </div>
+        </div>
+    </div>
     
-
-
+    
   </div>
-  <div *ngIf="condition.type=='zonesensorvalue'" >
-      zonesensorvalue 
-  </div>
+  
   <div *ngIf="condition.type=='zonesensorstatus'" >
       zonesensorstatus 
   </div>

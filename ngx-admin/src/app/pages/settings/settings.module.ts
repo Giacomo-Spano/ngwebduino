@@ -9,7 +9,7 @@ import { AlertmessageComponent } from './alertmessage/alertmessage.component';
 //import { ServiceComponent } from './service/service.component';
 //import { ScenarioComponent } from './scenario/scenario.component';
 import { SensorsComponent } from './sensors/sensors.component';
-import { ScenariosComponent } from './scenarios/scenarios.component';
+//import { ScenariosComponent } from './scenarios/scenarios.component';
 import { ZonesComponent } from './zones/zones.component';
 import { ServicesComponent } from './services/services.component';
 import { WebduinosystemactuatorsComponent } from './webduinosystems/webduinosystem/webduinosystemactuators/webduinosystemactuators.component';
@@ -33,7 +33,7 @@ import { WebduinosystemscenariosComponent } from './webduinosystems/webduinosyst
     //ServiceComponent,
     //ScenarioComponent,
     SensorsComponent,
-    ScenariosComponent,
+    //ScenariosComponent,
     ZonesComponent,
     ServicesComponent,
     WebduinosystemactuatorsComponent,

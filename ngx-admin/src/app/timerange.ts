@@ -3,7 +3,7 @@ import { Action } from "./action";
 
 export class Timerange {
     id: number;
-    scenarioid: number;
+    programid: number;
     name: string;
     description: string;
     enabled: boolean;
@@ -13,5 +13,10 @@ export class Timerange {
     conditions: Condition[];
 
     constructor() {  
-     }  
+        this.id = 0;
+        this.name = "new timerange";
+        this.enabled = true;
+        this.starttime = "00:00";
+        this.endtime = "00:01";
+    }  
   }

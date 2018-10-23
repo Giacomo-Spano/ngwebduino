@@ -1,0 +1,90 @@
+
+<nb-card size="large" class=".main">
+    <nb-card-header>
+        <div class="cameras-card-header">
+            <span class="cameras-card-title">Security Cameras</span>
+            <span class="cameras-filter">
+                <nb-actions size="medium">
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                </nb-actions>
+            </span>
+          </div>
+    </nb-card-header>
+    <nb-card-body *ngIf="webduinosystem"> 
+        <div class="container" >
+            <div class="main details">
+                <div class="title">
+                    {{webduinosystem.name}}
+                </div>
+                <div class="description">
+                React Native UI Kitten is a framework xxx!
+                </div>
+                <a href="https://www.w3schools.com">Visit W3Schools.com!</a>
+                <button routerLink="heaterx">Go to sidekicks</button>
+                <nb-actions size="medium">
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                    <nb-action icon="nb-gear" (click)="onClickMe()"></nb-action>
+                </nb-actions>
+            </div>
+
+            <div class="actuators details">  
+                <div class="title">Attuatori</div>
+                <div class="description" *ngIf="webduinosystem.actuators">
+                    <ul class="list">
+                        <li *ngFor="let actuator of webduinosystem.actuators">
+                            <ngx-sensor [sensorid]="actuator.sensorid">lll</ngx-sensor>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="zones details">
+                <div class="title">Zone</div>
+                <div class="description" *ngIf="webduinosystem.zones">
+                    <ul class="list">
+                        <li *ngFor="let zone of webduinosystem.zones">
+                            <ngx-zone [zoneid]=zone.zoneid></ngx-zone>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="services details">
+                    <div class="title">Servizi</div>
+                    <div class="description" *ngIf="webduinosystem.services">
+                        <ul class="list">
+                            <li *ngFor="let service of webduinosystem.services">
+                                <ngx-service [serviceid]=service.serviceid></ngx-service>
+                            </li>
+                        </ul>
+                    </div>
+            </div>  
+        </div>
+        <div class="container">
+                <div class="scenarios details">
+                    <div class="title" >Scenari</div>
+                    <ngx-scenarios [scenarios]=webduinosystem.scenarios [edit]=editmode [cardview]=false></ngx-scenarios>
+                    <!-- <div class="title" (click)="onScenarios()">Scenari</div>
+                    <div class="description" *ngIf="webduinosystem.scenarios">
+                        <ul class="list">
+                            <li *ngFor="let scenario of webduinosystem.scenarios">
+                                <ngx-scenario #newHero (click)="onClickMe(newHero)" [scenarioid]=scenario.id [webduinosystem]=webduinosystem></ngx-scenario>
+                            </li>
+                        </ul>
+                    </div>-->
+                </div>               
+        </div>
+        <button *ngIf="editmode" class="btn btn-primary" (click)="onAdd()">Salva</button>
+    </nb-card-body>
+</nb-card>
+
+<nb-card size="xsmall" class="solar-card">
+    <nb-card-header>Solar Energy Consumption</nb-card-header>
+    <nb-card-body>
+      
+    </nb-card-body>
+  </nb-card>

@@ -4,16 +4,24 @@ import { WebduinoService } from '../../../webduino.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Scenario } from '../../../scenario';
 import { Webduinosystem } from '../../../webduinosystem';
+import { Timerange } from '../../../timerange';
+import { Alertmessage } from '../../../alertmessage';
 
 @Component({
   selector: 'ngx-program',
   templateUrl: './program.component.html',
   styleUrls: ['./program.component.scss']
 })
-export class ProgramComponent implements OnInit, OnChanges{
+export class ProgramComponent implements OnInit, OnChanges {
 
   @Input() program: Program;
   //@Input() scenario: Scenario;
+
+  alertmessage: Alertmessage = {
+    show: false,
+    name: 'Windstorm2',
+    message: 'message',
+  };  
   
   @Input() webduinosystemid: number;
   @Output() ondelete = new EventEmitter();
@@ -55,10 +63,27 @@ export class ProgramComponent implements OnInit, OnChanges{
   }
 
   onSave() {
+    this.webduinosystemService.updateProgram(this.program)
+    .subscribe(program =>
+      {
+        //this.showLargeMscenarioscenarioscenarioodal(); 
+        
+        this.program = program;
 
-    //this.onprogramclick.emit(this.program);
-    //this.ondelete.emit(this.program);
-    
+        this.alertmessage.show = true;   
+          
+        //this.alertmessage.ngOnInit();
+
+        //this.ngOnInit();
+            
+      });   
+  }
+  
+  onAdd(): void {
+    let timerange: Timerange;
+    timerange = new Timerange();
+    timerange.programid = this.program.id;
+    this.program.timeranges.push(timerange);
   }
 
   ngOnChanges(changes: SimpleChanges) {

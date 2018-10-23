@@ -15,6 +15,8 @@ export class Action {
   deviceid: number;
 
     constructor() {
-     }  
+      this.id = 0;
+      this.type = 'actuator';
+    }  
 
   }

@@ -1,12 +1,15 @@
 <div *ngIf="!cardview" >
+
+    <ngx-alertmessage [message]="prova"></ngx-alertmessage>
+
     <div *ngIf="program" class="block_container">
       
       <div>
-        <div >Programma [{{program.id}}]
+        <div >Programmax [{{program.id}}]
         </div>
         <div class="input-group input-group-sm">
           <div class="col-md-8 input-group-sm">
-            <input type="text" placeholder="Small Input" class="form-control" [value]="program.name"/>
+            <input [(ngModel)]="program.name" type="text" placeholder="Small Input" class="form-control" [value]="program.name"/>
           </div>
         
           <div class="col-md-12 input-group-sm">
@@ -19,15 +22,25 @@
             <nb-checkbox>Do</nb-checkbox>
           </div>
         </div>
+
+        <div class="block_container">
+            <div>FASCE ORARIE</div>
+            <div><nb-actions size="small">
+                <nb-action icon="ion-plus-round" (click)="onAdd()"></nb-action>
+               </nb-actions>
+            </div>
+        </div>
+  
         <div *ngIf="program.timeranges">
+          
             <ul class="list">
+              
               <li *ngFor="let timerange of program.timeranges">
-                <ngx-timerange [timerange]=timerange [webduinosystemid]=webduinosystemid [cardview]=false (change)="onTimereangeChange($event)"></ngx-timerange>
+                <ngx-timerange [timerange]=timerange [webduinosystemid]=webduinosystemid [cardview]=false ></ngx-timerange>
               </li>
             </ul>
         </div>
       </div>
-       
       <div>
         <nb-actions size="small">
           <nb-action icon="ion-edit" (click)="onClickMe()"></nb-action>
@@ -51,12 +64,6 @@
             <div class="form-group row">
                 <label for="inputName" class="col-sm-3 col-form-label">Name</label>
                     <div class="col-sm-9">
-                        <input [(ngModel)]="program.name" type="text" class="form-control" id="inputName" placeholder="Name">
-                    </div>
-            </div>
-
-            <div class="title">Fasce orarie</div>
-                    
               <div class="description" *ngIf="program.timeranges">
                 <ul class="list">
                   <li *ngFor="let timerange of program.timeranges">

@@ -11,7 +11,8 @@ export class AlertmessageComponent implements OnInit {
 
   @Input() alertmessage: Alertmessage = {
       show: false,
-      name: 'Windstorm'
+      name: 'Windstorm',
+      message: 'Messaggio',
   };
 
   constructor() { 
